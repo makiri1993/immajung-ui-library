@@ -7,4 +7,8 @@ injectGlobal`
 	padding: 0 0 0 0;
 	font-family: sans-serif;
 }
+body {
+    display:block;
+}
+
 `

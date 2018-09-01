@@ -24,9 +24,11 @@ export default class Navbar extends Component<IProps, IState> {
 
   public render() {
     return (
-      <NavContainer navBackground={this.props.backgroundColor}>
-        {this.prepareChildren(this.props.children)}
-      </NavContainer>
+      <NavOverflow>
+        <NavContainer navBackground={this.props.backgroundColor}>
+          {this.prepareChildren(this.props.children)}
+        </NavContainer>
+      </NavOverflow>
     )
   }
 
@@ -58,6 +60,7 @@ export interface IStyleProps {
 }
 
 const NavItem = styled('div')`
+  display: block;
   margin-left: ${margins.md};
   margin-right: ${margins.md};
 `
@@ -68,11 +71,24 @@ const NavContainer = styled('div')`
   flex-direction: row;
   align-items: center;
   flex-wrap: nowrap;
-  overflow-x: auto;
+  z-index: 10;
+  /* overflow: scroll !important; */
+  /* -webkit-overflow-scrolling: touch; */
+  /* white-space: nowrap !important; */
+  padding: ${padding.sm};
 
+  background-color: ${(props: IStyleProps) => props.navBackground};
+`
+
+const NavOverflow = styled('div')`
+  /* overflow-x: auto; */
+  position: fixed;
   width: 100%;
   height: 10vh;
-  padding: ${padding.sm};
+  overflow-x: scroll;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  white-space: nowrap;
 
   background-color: ${(props: IStyleProps) => props.navBackground};
   ::-webkit-scrollbar {
