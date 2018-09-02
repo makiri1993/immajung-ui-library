@@ -13,7 +13,8 @@
     "object-literal-sort-keys": false,
     "import-name": false,
     "variable-name": false,
-    "arrow-parens": true
+    "arrow-parens": true,
+    "ter-arrow-parens": false
   },
   "rulesDirectory": []
 }
