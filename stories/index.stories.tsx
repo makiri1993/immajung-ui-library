@@ -38,6 +38,9 @@ storiesOf('Navbar', module)
         <p>Label</p>
         <a href="example">Link 8</a>
         <a href="example">Link 9</a>
+        <a href="example">Link 10</a>
+        <a href="example">Link 11</a>
+        <a href="example">Link 12</a>
       </Navbar>
       <h1>Hello World</h1>
       <h1>Hello World</h1>

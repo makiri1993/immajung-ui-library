@@ -24,11 +24,9 @@ export default class Navbar extends Component<IProps, IState> {
 
   public render() {
     return (
-      <NavOverflow>
-        <NavContainer navBackground={this.props.backgroundColor}>
-          {this.prepareChildren(this.props.children)}
-        </NavContainer>
-      </NavOverflow>
+      <NavContainer navBackground={this.props.backgroundColor}>
+        {this.prepareChildren(this.props.children)}
+      </NavContainer>
     )
   }
 
@@ -42,16 +40,17 @@ export default class Navbar extends Component<IProps, IState> {
   }
 
   private identifyChild(child: React.ReactNode) {
-    return <NavItem>{child}</NavItem>
-    // switch (child) {
-    //   case typeof HTMLAnchorElement:
-    //   case typeof HTMLParagraphElement:
-    //   case typeof HTMLUListElement:
-    //   case typeof HTMLAnchorElement:
+    switch (child) {
+      case typeof HTMLAnchorElement:
+      // child = <NavLink>{}</NavLink>
+      case typeof HTMLParagraphElement:
+      case typeof HTMLUListElement:
+      case typeof HTMLAnchorElement:
 
-    //   default:
-    //     break
-    // }
+      default:
+        break
+    }
+    return <NavItem>{child}</NavItem>
   }
 }
 
@@ -60,38 +59,22 @@ export interface IStyleProps {
 }
 
 const NavItem = styled('div')`
-  display: block;
+  flex: 0 0 auto;
   margin-left: ${margins.md};
   margin-right: ${margins.md};
 `
 
 const NavContainer = styled('div')`
-  display: inline-flex;
-  /* position: sticky; */
-  flex-direction: row;
-  align-items: center;
+  display: flex;
   flex-wrap: nowrap;
-  z-index: 10;
-  /* overflow: scroll !important; */
-  /* -webkit-overflow-scrolling: touch; */
-  /* white-space: nowrap !important; */
-  padding: ${padding.sm};
-
-  background-color: ${(props: IStyleProps) => props.navBackground};
-`
-
-const NavOverflow = styled('div')`
-  /* overflow-x: auto; */
-  position: fixed;
-  width: 100%;
-  height: 10vh;
   overflow-x: scroll;
-  overflow-y: hidden;
+  height: 10vh;
+  align-items: center;
+  padding: ${padding.sm};
   -webkit-overflow-scrolling: touch;
-  white-space: nowrap;
 
   background-color: ${(props: IStyleProps) => props.navBackground};
-  ::-webkit-scrollbar {
+  &::-webkit-scrollbar {
     display: none;
   }
 `

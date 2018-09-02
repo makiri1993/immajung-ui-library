@@ -8,7 +8,11 @@ injectGlobal`
 	font-family: sans-serif;
 }
 body {
-    display:block;
+    width:100vw;
+}
+
+div {
+    display: block;
 }
 
 `
