@@ -1,4 +1,12 @@
 /* tslint:disable:max-line-length */
+export const color = {
+  black: '#545456',
+}
+
+export const height = {
+  mobileNavbar: '10vh',
+}
+
 export const margins = {
   sm: '0.5rem',
   md: '1rem',

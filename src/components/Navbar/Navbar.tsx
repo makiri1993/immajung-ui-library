@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component, ReactNode } from 'react'
 import styled from 'react-emotion'
-import { margins, padding } from '../../styles/variables'
+import { color, height, margins, padding } from '../../styles/variables'
 
 interface INavItem {
   label: string
@@ -30,27 +30,11 @@ export default class Navbar extends Component<IProps, IState> {
     )
   }
 
-  private prepareChildren(children: React.ReactNode): React.ReactNode {
+  private prepareChildren(children: ReactNode): ReactNode {
     if (children) {
-      return React.Children.map(children, (child) => this.identifyChild(child))
-      // Ignore the first child
-      // this.identifyChild(child)
+      return React.Children.map(children, (child) => <NavItem>{child}</NavItem>)
     }
     return null
-  }
-
-  private identifyChild(child: React.ReactNode) {
-    switch (child) {
-      case typeof HTMLAnchorElement:
-      // child = <NavLink>{}</NavLink>
-      case typeof HTMLParagraphElement:
-      case typeof HTMLUListElement:
-      case typeof HTMLAnchorElement:
-
-      default:
-        break
-    }
-    return <NavItem>{child}</NavItem>
   }
 }
 
@@ -62,19 +46,29 @@ const NavItem = styled('div')`
   flex: 0 0 auto;
   margin-left: ${margins.md};
   margin-right: ${margins.md};
+  text-align: center;
+  a {
+    color: ${color.black};
+    text-decoration: none;
+  }
+  p {
+  }
+  :hover {
+    background-color: ${color.black};
+  }
 `
 
 const NavContainer = styled('div')`
   display: flex;
   flex-wrap: nowrap;
   overflow-x: scroll;
-  height: 10vh;
+  height: ${height.mobileNavbar};
   align-items: center;
   padding: ${padding.sm};
   -webkit-overflow-scrolling: touch;
 
   background-color: ${(props: IStyleProps) => props.navBackground};
-  &::-webkit-scrollbar {
+  ::-webkit-scrollbar {
     display: none;
   }
 `

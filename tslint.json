@@ -14,7 +14,8 @@
     "import-name": false,
     "variable-name": false,
     "arrow-parens": true,
-    "ter-arrow-parens": false
+    "ter-arrow-parens": false,
+    "no-parameter-reassignment": false
   },
   "rulesDirectory": []
 }
