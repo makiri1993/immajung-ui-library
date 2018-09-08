@@ -1,3 +1,4 @@
 node_modules/
-yarn.lock
 storybook-static
+yarn.lock
+yarn-error.log
